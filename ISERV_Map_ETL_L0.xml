@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Settings>
+    <ConfigObjectCollection>
+        <ConfigObject>
+
+
+            <Name>ISERV Map ETL Settings</Name>
+
+            <ScratchFolder>Z:\ETLscratch\ISERV</ScratchFolder> <!-- D:\temp\ETLscratch\ISERV< -->
+
+            <!-- Logging Options -->
+            <DetailedLogging>1</DetailedLogging>
+            <Logger_Output_Location>D:\Logs\ETL_Logs\ISERV</Logger_Output_Location>
+            <Logger_Prefix_Variable>ISERV_Script</Logger_Prefix_Variable>
+            <Logger_Num_Of_Days_To_Keep_Log>30</Logger_Num_Of_Days_To_Keep_Log>
+
+            <!-- Geo Database Config -->
+            <Path_To_GeoDatabase_Or_SDE>D:\SERVIR\Data\Global\ISERV_Map.gdb</Path_To_GeoDatabase_Or_SDE>
+            <FeatureClassName>ISERV_MapData</FeatureClassName>
+            <LinkingFieldName>Download</LinkingFieldName>
+            <FeatureClassFields>
+                <!-- These two fields are handled automatically by arcgis, adding them here may cause errors in the script -->
+                <!-- <Field>SHAPE</Field> -->
+                <!-- <Field>OBJECTID</Field> -->
+                <Field>Download</Field>
+                <Field>Name</Field>
+                <Field>Date</Field>
+                <Field>Time</Field>
+                <Field>Lat</Field>
+                <Field>Lon</Field>
+                <Field>Preview</Field>
+				<Field>DateAdded</Field>
+				<!--
+                <Field>x_Lon</Field>
+                <Field>y_Lat</Field>
+                -->
+            </FeatureClassFields>
+
+            <!-- FTP Config -->
+            <FTP_Host>ghrc.nsstc.nasa.gov</FTP_Host>
+            <FTP_User>anonymous</FTP_User>
+            <FTP_Pass>anonymous</FTP_Pass>
+            <FTP_SubFolderPath>/pub/iserv/data/L0/</FTP_SubFolderPath>
+
+
+
+            <!--
+            Unused Settings START
+
+            <FTP_Path_Year_Start>2013</FTP_Path_Year_Start>
+            <FTP_Path_Year_End>2014</FTP_Path_Year_End>
+
+            Unused Settings END
+            -->
+
+            <!-- Image Options -->
+            <Thumb_WebLocation_Image_Root_Folder>https://www.servirglobal.net/iservThumbs</Thumb_WebLocation_Image_Root_Folder> <!-- Deprecating this setting -->
+            <Thumb_Output_Folder>Z:\ETLscratch\ISERV\Transform</Thumb_Output_Folder> <!-- Deprecating this setting -->
+            <Thumb_Width>250</Thumb_Width>
+            <Thumb_Height>250</Thumb_Height>
+
+            <!-- If the machine this script is running on is part of the same amazon account as the s3 to access, Set this option to 1.  If the s3 connection fails, set this to 0 and fill out the credentials in the settings below. -->
+            <s3_UseLocal_IAM_Role>1</s3_UseLocal_IAM_Role>
+            <s3_BucketName>bucket.servirglobal.net</s3_BucketName>
+            <s3_BucketRootPath>https://bucket.servirglobal.net.s3.amazonaws.com/</s3_BucketRootPath>
+            <s3_UserName>USERNAME</s3_UserName>
+            <s3_AccessKeyID>YOURACCESSKEYID</s3_AccessKeyID>
+            <s3_SecretAccessKey>YOURSECRETACCESSKEY</s3_SecretAccessKey>
+            <s3_PathTo_Output_Thumb_Files>/global/data/eodata/iserv/L0/</s3_PathTo_Output_Thumb_Files>  <!-- Old path /iserv/L0/ -->
+
+        </ConfigObject>
+    </ConfigObjectCollection>
+</Settings>
